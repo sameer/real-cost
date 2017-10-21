@@ -26,6 +26,6 @@
       "js": ["jquery-3.2.1.slim.min.js", "real-cost-ebay.js"],
       "run_at": "document_idle"
     }
-  ],
+  ]
 }
 
