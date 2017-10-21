@@ -24,6 +24,7 @@ p {
 
 label {
     margin: 0 1rem;
+    font-weight: bold;
 }
 
 .criteria {
@@ -33,7 +34,16 @@ label {
 .real-cost {
     display: visible;
     visibility: visible;
+}
 
+.submitButton {
+    margin-top: 14px;
+    margin-bottom: 14px;
+    
+}
+
+#item {
+    border-bottom: 1px solid white;
 }
 
 .real-cost-icon {
@@ -47,6 +57,6 @@ label {
     transition: width 0s ease;
 }
 
-.real-cost-bar ::hover{
+.real-cost-bar ::hover {
     width: 200px;
 }
