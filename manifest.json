@@ -18,13 +18,13 @@
       "matches" : ["https://*.amazon.com/*"],
       "css": ["balloon.css", "real-cost.css"],
       "js": ["jquery-3.2.1.slim.min.js", "real-cost-amazon.js"],
-      "run_at" : "document_idle"
+      "run_at" : "document_end"
     },
     {
       "matches" : ["https://*.ebay.com/"],
       "css": ["balloon.css", "real-cost.css"],
       "js": ["jquery-3.2.1.slim.min.js", "real-cost-ebay.js"],
-      "run_at": "document_idle"
+      "run_at": "document_end"
     }
   ]
 }
