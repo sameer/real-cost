@@ -14,9 +14,16 @@
   ],
   "content_scripts": [
     {
-      "matches" : ["https://*.amazon.com/", "https://*.ebay.com/*"],
+      "matches" : ["https://*.amazon.com/"],
       "css": ["real-cost.css"],
-      "js": ["real-cost.js"]
+      "js": ["real-cost-amazon.js"],
+      "run_at" : "document_idle"
+    },
+    {
+      "matches" : ["https://*.ebay.com/"],
+      "css": ["real-cost.css"],
+      "js": ["real-cost-ebay.js"],
+      "run_at": "document_idle"
     }
   ],
   "content_security_policy": "script-src 'self' https://code.jquery.com; script-src 'self' https://cdn.jsdelivr.net; object-src 'self'"
