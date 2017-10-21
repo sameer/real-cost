@@ -12,47 +12,44 @@
 
 <body>
     <div id="myDisplayType">
-        <div>
+        <div id="wageButtonStyle">
             <label>
-                <input type="radio" name="type" checked="checked" value="1" /> Wage?
+                <input type="radio" name="type" checked="checked" value="1" /> Wage
             </label>
         </div>
-        <div>
+        <div id="itemButtonStyle">
             <label>
-                <input type="radio" name="type" value="2" /> Item?
+                <input type="radio" name="type" value="2" /> Item
             </label>
         </div>
     </div>
 
-    <div id="Type1" class="desc">
-        <div class="criteria">
-            <p>Wage?</p>
-            <form id="set-new-wage">
-                <input type="text" id="wage-input" />
-                <button type="input" class="inputWageButton">Add Wage</button>
+    <div id="inputSpace">
+        <div id="Type1" class="desc">
+            <div class="criteria">
+                <form id="set-new-wage">
+                    <input type="text" id="wage-input" />
+                    <button type="input" id="inputWageButton">Add Wage</button>
 
-            </form>
-        </div>
-    </div>
-
-
-    <div id="Type2" class="desc" style="display: none;">
-        <div id="item" class="criteria">
-            <p>Item?</p>
-            <form id="set-new-item">
-                <input type="text" id="item-input" />
-                <button type="input" class="inputItemButton">Add Item</button>
-
-            </form>
+                </form>
+            </div>
         </div>
 
-        <div id="price" class="criteria">
-            <p>Price?</p>
-            <form id="set-new-price">
-                <input type="text" id="price-input" />
-                <button type="input" class="inputPriceButton">Add Price</button>
 
-            </form>
+        <div id="Type2" class="desc" style="display: none;">
+            <div id="item" class="criteria">
+                <form id="set-new-item">
+                    <input type="text" id="item-input" />
+                </form>
+            </div>
+
+            <div id="price" class="criteria">
+                <form id="set-new-price">
+                    <input type="text" id="price-input" />
+                    <button type="input" id="inputPriceButton">Add Item & Price</button>
+
+                </form>
+            </div>
         </div>
     </div>
 

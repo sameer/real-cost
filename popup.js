@@ -5,6 +5,19 @@ $(document).ready(function () {
 
         $("div.desc").hide();
         $("#Type" + test).show();
+
+    });
+
+    $('#itemButtonStyle').addClass("inactive");
+
+    $("#itemButtonStyle").click(function () {
+        $('#itemButtonStyle').removeClass("inactive");
+        $('#wageButtonStyle').addClass("inactive");
+    });
+
+    $("#wageButtonStyle").click(function () {
+        $('#wageButtonStyle').removeClass("inactive");
+        $('#itemButtonStyle').addClass("inactive");
     });
 });
 
@@ -21,10 +34,10 @@ function getPriceValue() {
 }
 
 var wageButton = document.getElementById('inputWageButton');
-wageButton.addEventListener('click', getWageValue, false);
+wageButton.addEventListener('click', getWageValue);
 
-var itemButton = document.getElementById('inputItemButton');
-itemButton.addEventListener('click', getItemValue, false);
+var itemButton = document.getElementById('inputPriceButton');
+itemButton.addEventListener('click', getItemValue);
 
 var priceButton = document.getElementById('inputPriceButton');
-priceButton.addEventListener('click', getPriceValue, false);
+priceButton.addEventListener('click', getPriceValue);
