@@ -12,10 +12,11 @@ body {
 
 #myDisplayType {
     display: flex;
+    margin-bottom: 0.2rem;
 }
 
 label {
-    margin: 0 1rem;
+    margin: 0 0.5rem;
     font-weight: bold;
 }
 
@@ -27,24 +28,35 @@ label {
     align-items: center;
 }
 
-p {
-    font-size: 14px;
-    font-weight: bold;
-}
-
 .real-cost {
     display: visible;
     visibility: visible;
 }
 
-.inputButton {
-    margin-top: 14px;
-    margin-bottom: 14px;
+#item-input,
+#wage-input,
+#price-input {
+    margin: 0.2rem 0;
+}
+
+#set-new-wage,
+#set-new-item,
+#set-new-price {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 0.2rem;
+    margin-top: 0.2rem;
+    
 }
 
 #item {
     border-bottom: 1px solid white;
 }
+
+
 
 .real-cost-icon {
     /*small symbol of the icon*/
@@ -59,8 +71,4 @@ p {
 
 .real-cost-bar ::hover {
     width: 200px;
-}
-
-#Type1 {
-    margin-top: 0.5rem;
 }
