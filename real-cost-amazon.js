@@ -1,8 +1,6 @@
-alert('hi');
 $(".sx-price").each( function(i, obj) {
-  alert(obj);
-  // Add css
+  parseFloat($(obj).find(".sx-price-whole").text() + "." + $(obj).find(".sx-price-fractional").text());
+  $(obj).addClass("hint--bottom").attr("aria-label", "This is a tooltip yo");
 });
-document.body.style.background = 'yellow';
 
 

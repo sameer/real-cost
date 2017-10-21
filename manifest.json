@@ -16,15 +16,15 @@
   "content_scripts": [
     {
       "matches" : ["https://*.amazon.com/*"],
-      "css": ["picnic.min.css", "real-cost.css"],
+      "css": ["hint.min.css", "real-cost.css"],
       "js": ["jquery-3.2.1.slim.min.js", "real-cost-amazon.js"],
-      "run_at" : "document_end"
+      "run_at" : "document_idle"
     },
     {
       "matches" : ["https://*.ebay.com/"],
-      "css": ["picnic.min.css", "real-cost.css"],
+      "css": ["hint.min.css", "real-cost.css"],
       "js": ["jquery-3.2.1.slim.min.js", "real-cost-ebay.js"],
-      "run_at": "document_end"
+      "run_at": "document_idle"
     }
   ],
   "content_security_policy": "script-src 'self' https://code.jquery.com; script-src 'self' https://cdn.jsdelivr.net; object-src 'self'"
