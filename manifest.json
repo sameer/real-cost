@@ -2,7 +2,7 @@
   "manifest_version": 2,
 
   "name": "RealCost",
-  "description": "A Chrome extension that makes prices more relatable and helps reduce unnecessary spending",
+  "description": "A Chrome extension that helps you manage spending habits by demystifying prices",
   "version": "1.0",
 
   "browser_action": {
