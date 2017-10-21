@@ -22,17 +22,31 @@ apply = function() {
       });
   $(".sx-price-currency, .a-price-symbol").text(CURRENCY_SYMBOL);
 
-  $(".a-color-base,.a-color-price")
-      .each(function(i, obj) {
-        price = $(obj).text();
-        if (!price.startsWith("$")) {
-          return;
-        }
-        price = price.substring(1);
-        price = parseFloat(price);
-        if (price !== 0)
-        $(obj).text(CURRENCY_SYMBOL + price);
-      });
+  var applicants =
+      ".a-color-base, .a-color-price, .a-text-strike, .a-size-minim .p13n-sc-price, .a-color-secondary, .a-link-normal";
+  var currency = new RegExp(/\$\d+\.\d{1,2}/);
+  (function() {
+    $(applicants)
+        .each(function(i, obj) {
+          text = $(obj).html();
+          while (match = currency.exec(text)) {
+            // alert(text);
+            text = text.replace(match, "you lose");
+          }
+          $(obj).html(text);
+        });
+  })();
+
 };
 
 $(document).ready(apply);
+
+var hasScrolled = false;
+$(window).scroll(function() { hasScrolled = true; });
+setInterval(function() {
+  if (hasScrolled) {
+    apply();
+  }
+}, 1500);
+
+$(".a-button").click(function() { setTimeout(apply, 300); });
