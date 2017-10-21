@@ -9,7 +9,6 @@ body {
     flex-direction: column;
 }
 
-<<<<<<< Updated upstream
 #myDisplayType {
     display: flex;
 }
@@ -30,7 +29,7 @@ label {
 .criteria {
     margin: 0;
 }
-=======
+
 .real-cost {
     display: visible;
     visibility: visible;
@@ -51,4 +50,3 @@ label {
 .real-cost-bar ::hover{
     width: 200px;
 }
->>>>>>> Stashed changes
