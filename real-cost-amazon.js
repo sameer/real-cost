@@ -1,6 +1,6 @@
 $(".sx-price").each( function(i, obj) {
-  parseFloat($(obj).find(".sx-price-whole").text() + "." + $(obj).find(".sx-price-fractional").text());
-  $(obj).addClass("hint--bottom").attr("aria-label", "This is a tooltip yo");
+  price = parseFloat($(obj).find(".sx-price-whole").text() + "." + $(obj).find(".sx-price-fractional").text());
+  $(obj).attr("data-balloon", "Stop wasting all your money, this costs " + price).attr("data-balloon-pos", "right");
 });
 
 
