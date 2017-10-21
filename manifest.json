@@ -13,9 +13,11 @@
     "storage"
   ],
   "content_scripts": [
-    "matches" : ["https://*amazon.com/*", "https://*ebay.com/*"],
-    "css": ["real-cost.css"],
-    "js": ["real-cost.js"]
+    {
+      "matches" : ["https://*.amazon.com/", "https://*.ebay.com/*"],
+      "css": ["real-cost.css"],
+      "js": ["real-cost.js"]
+    }
   ]
 }
 
