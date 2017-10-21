@@ -10,8 +10,12 @@
     "default_popup": "popup.html"
   },
   "permissions": [
-    "activeTab",
     "storage"
+  ],
+  "content_scripts": [
+    "matches" : ["https://*amazon.com/*", "https://*ebay.com/*"],
+    "css": ["real-cost.css"],
+    "js": ["real-cost.js"]
   ]
 }
 
