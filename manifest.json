@@ -27,6 +27,5 @@
       "run_at": "document_idle"
     }
   ],
-  "content_security_policy": "script-src 'self' https://code.jquery.com; script-src 'self' https://cdn.jsdelivr.net; object-src 'self'"
 }
 
