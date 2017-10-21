@@ -1,6 +1,13 @@
 $(".sx-price").each( function(i, obj) {
-  price = parseFloat($(obj).find(".sx-price-whole").text() + "." + $(obj).find(".sx-price-fractional").text());
-  $(obj).attr("data-balloon", "Stop wasting all your money, this costs " + price).attr("data-balloon-pos", "right");
+  if($(obj).find('.sx-dash-formatting').length !== 0) {
+
+  }
+  prices = $(obj).find(".sx-price-whole");
+  $(obj).find(".sx-price-fractional").each(function(id, frac){
+    prices[id] = parseFloat($(prices[id]).text() + "." + $(frac).text());
+  });
+  $(obj).find(".sx-price-whole").each(function(id, whole) { $(whole).text(Math.trunc(prices[id])); });
+  $(obj).find(".sx-price-fractional").each( function(id, frac) { $(frac).text(Math.trunc((prices[id] % 1)*100)); });
 });
 
 
