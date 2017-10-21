@@ -5,18 +5,15 @@ body {
     font-family: 'Work Sans', sans-serif;
     display: flex;
     align-items: center;
-    justify-content: center;    
+    justify-content: center;
     flex-direction: column;
 }
 
 #myDisplayType {
     display: flex;
-
 }
 
-.desc {
-    
-}
+.desc {}
 
 p {
     font-size: 14px;
