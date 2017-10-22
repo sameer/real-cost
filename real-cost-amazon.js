@@ -1,8 +1,9 @@
 CURRENCY_SYMBOL = "\u0394";
-apply = function() {
-  $(".sx-price, .a-price")
+
+var apply = function() {
+  $(".sx-price, .a-price").not("[real-price-applied='true']")
       .each(function(i, obj) {
-        prices = $(obj).find(".sx-price-whole, .a-price-whole");
+        var prices = $(obj).find(".sx-price-whole, .a-price-whole");
         $(obj)
             .find(".sx-price-fractional, .a-price-fraction")
             .each(function(id, frac) {
@@ -26,14 +27,17 @@ apply = function() {
       ".a-color-base, .a-color-price, .a-text-strike, .a-size-minim .p13n-sc-price, .a-color-secondary, .a-link-normal";
   var currency = new RegExp(/\$\d{1,6}(\.\d{2})?/);
   (function() {
-    $(applicants)
+    $(applicants).not("[real-price-applied='true']")
         .each(function(i, obj) {
-          text = $(obj).html();
+          var text = $(obj).html();
+          var matchedany = false;
           while (match = currency.exec(text)) {
             // alert(text);
             text = text.replace(match[0], "you lose");
+            matchedany = true;
           }
-          $(obj).html(text);
+          $(obj).attr('real-price-applied', 'true');
+          if (matchedany) { $(obj).html(text); }
         });
   })();
 
@@ -46,6 +50,7 @@ $(window).scroll(function() { hasScrolled = true; });
 setInterval(function() {
   if (hasScrolled) {
     apply();
+    hasScrolled = false;
   }
 }, 1500);
 

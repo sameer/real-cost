@@ -4,16 +4,26 @@ var applicants = ".itemPrice, .couponTitle, .oldListPrice, #dealPrice, #dealExtr
 
 var currency = new RegExp(/\$\d{1,6}(\.\d{2})?/);
 var apply = function() {
-  $(applicants)
+  $(applicants).not("[real-price-applied='true']")
       .each(function(i, obj) {
-        text = $(obj).html();
-        //alert(text);
+        var text = $(obj).html();
+        var matchedany = false;
         while (match = currency.exec(text)) {
           //alert(match);
           text = text.replace(match[0], "you lose");
+          matchedany = true;
         }
-        $(obj).html(text);
+        $(obj).attr('real-price-applied', 'true');
+        if (matchedany) { $(obj).html(text); }
       });
 };
 
 $(document).ready(apply);
+
+var hasScrolled = false;
+setInterval(function() {
+  if (hasScrolled) {
+    apply();
+    hasScrolled = false;
+  }
+}, 1500);
