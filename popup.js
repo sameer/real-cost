@@ -1,12 +1,6 @@
 /* popup js here */
 $(document).ready(function () {
-    /* $("input[name$='type']").click(function () {
-        var test = $(this).val();
 
- 
-
-    });
-*/
     $('#itemButtonStyle').addClass("inactive");
     $('#Type1').show();
     $('#Type2').hide();
