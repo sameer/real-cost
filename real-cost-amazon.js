@@ -1,24 +1,24 @@
 var CURRENCY_SYMBOL = "\u0394";
 
 var icon =
-    '<div class="real-wrapper"><div class = "real-cost-icon" ><img src="' +
+    '<img class="real-cost-icon" src="' +
     chrome.extension.getURL('icon2.png') +
-    '"style = "display: block; visibility: visible; width: 20px; height: 20px"> </div>';
+    '">';
 var bar =
-    '<div class = "real-cost-bar transition"><span>you got grim reaped</span></div></div>';
+    '<div class = "real-cost-bar real-cost-transition"><span>you got grim reaped</span></div>';
 
 //$(".a-color-base").append(icon + bar);
-var vishnu = function() {  $('.real-wrapper')
+var vishnu = function() {  $('.real-cost-icon')
 .hover(
     function() {
-      $(this)
+      $(this).parent()
           .find('.real-cost-bar')
-          .css({visibility : 'visible', width : '150px'});
+          .css({visibility : 'visible', width : 'auto'});
     },
 
     // when mouse leaves bar, collapses
     function() {
-      var bar = $(this).find('.real-cost-bar');
+      var bar = $(this).parent().find('.real-cost-bar');
       bar.removeClass('transition');
       bar.css({visibility : 'hidden', width : '0px'});
       bar.addClass('transition');
