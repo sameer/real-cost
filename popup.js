@@ -1,23 +1,29 @@
 /* popup js here */
 $(document).ready(function () {
-    $("input[name$='type']").click(function () {
+    /* $("input[name$='type']").click(function () {
         var test = $(this).val();
 
-        $("div.desc").hide();
-        $("#Type" + test).show();
+ 
 
     });
-
+*/
     $('#itemButtonStyle').addClass("inactive");
+    $('#Type1').show();
+    $('#Type2').hide();
+
 
     $("#itemButtonStyle").click(function () {
         $('#itemButtonStyle').removeClass("inactive");
         $('#wageButtonStyle').addClass("inactive");
+        $('#Type1').hide();
+        $('#Type2').show();
     });
 
     $("#wageButtonStyle").click(function () {
         $('#wageButtonStyle').removeClass("inactive");
         $('#itemButtonStyle').addClass("inactive");
+        $('#Type2').hide();
+        $('#Type1').show();
     });
 });
 

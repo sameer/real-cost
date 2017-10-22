@@ -6,7 +6,7 @@ body {
     align-items: center;
     flex-direction: column;
     width: 150px;
-    height: 160px;
+    height: 155px;
 }
 
 #myDisplayType {
@@ -49,6 +49,10 @@ body {
     align-content: center;
     align-items: center;
     flex-direction: column;
+}
+
+#inputWageButton {
+    margin-top: 40px;
 }
 
 .inactive {
