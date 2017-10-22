@@ -67,21 +67,50 @@ body {
 }
 
 .real-cost {
-    display: visible;
+    display: block;
     visibility: visible;
+    height: min-content;
+    width: min-content;
+
 }
 
+.real-wrapper {
+    display: inline-block;
+    visibility: visible;
+    overflow: visible;
+    white-space: nowrap;
+    height: 25px;
+    width: 25px;
+}
+
+/*icon div wrapper*/
 .real-cost-icon {
-    /*small symbol of the icon*/
+    display: inline-block;
+    width: 25px;
+    height: 25px;
 }
 
+/*div wrapper bar expands outward when hovering over icon*/
 .real-cost-bar {
+    position: absolute;
     visibility: hidden;
-    width: 0;
-    height: 100px;
-    transition: width 0s ease;
+    display: inline-block;
+    width: 0px;
+    height: min-content;
+    white-space: nowrap;
+    transition: width 0s;
+    background: rgb(250, 240, 240);
+    border-radius: 5px;
+    border: solid rgb(250, 190, 101) 2px;
+    z-index: 1001;
+    overflow: hidden;
 }
 
-.real-cost-bar ::hover {
-    width: 200px;
+.transition {
+    transition: width 1.5s ease !important;
 }
+
+/*this bar expands outward when hovering over icon*/
+/* .real-cost-bar ::hover{
+    width: 200px;
+} */

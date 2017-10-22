@@ -2,7 +2,7 @@ CURRENCY_SYMBOL = "\u0394";
 
 var applicants = ".itemPrice, .couponTitle, .oldListPrice, #dealPrice, #dealExtraDetails, .textDescription, .num, .couponInfo, a.altText, .priceInfo";
 
-var currency = new RegExp(/\$\d{1,6}(\.\d{2})?/);
+var currency = new RegExp(/\$\d{1,6}(\.\d{1,2})?/);
 var apply = function() {
   $(applicants).not("[real-price-applied='true']")
       .each(function(i, obj) {

@@ -1,8 +1,8 @@
 CURRENCY_SYMBOL = "\u0394";
 
-var applicants = ".bold, .fee, .stk-thr, #prcIsum, #fshippingCost, .mfe-price";
+var applicants = ".bold, .fee, .stk-thr, #prcIsum, #fshippingCost, .mfe-price, .price, .hl-item__price, .hl-item__deal-price, .dne-itemtile-original-price, .first";
 
-var currency = new RegExp(/\$\d{1,6}(\.\d{2})?/);
+var currency = new RegExp(/\$\d{1,3}(\,\d{3})*(\.\d{2})?/);
 var apply = function() {
   $(applicants).not("[real-price-applied='true']")
       .each(function(i, obj) {
