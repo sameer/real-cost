@@ -18,8 +18,7 @@
 /*icon div wrapper*/
 .real-cost-icon {
     display: inline-block;
-    width: 25px;
-    height: 25px;
+    height: 1em;
 }
 
 /*div wrapper bar expands outward when hovering over icon*/
