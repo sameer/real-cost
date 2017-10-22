@@ -1,11 +1,3 @@
-.real-cost {
-    display: block;
-    visibility: visible;
-    height: min-content;
-    width: min-content;
-
-}
-
 .real-wrapper {
     display: inline-block;
     visibility: visible;
