@@ -51,7 +51,7 @@ var diamond = function(price, type, name) {
           while (match = currency.exec(text)) {
             text = text.replace(
                 match[0],
-                match[0].substring(1) +
+                CURRENCY_SYMBOL + match[0].substring(1) +
                     icon(parseFloat(
                         Math.trunc((match[0].substring(1)) / parseFloat(price) * 100) / 100) + ' ' + name));
             matchedany = true;
