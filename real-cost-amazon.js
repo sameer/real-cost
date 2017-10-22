@@ -24,14 +24,14 @@ apply = function() {
 
   var applicants =
       ".a-color-base, .a-color-price, .a-text-strike, .a-size-minim .p13n-sc-price, .a-color-secondary, .a-link-normal";
-  var currency = new RegExp(/\$\d+\.\d{1,2}/);
+  var currency = new RegExp(/\$\d{1,6}(\.\d{2})?/);
   (function() {
     $(applicants)
         .each(function(i, obj) {
           text = $(obj).html();
           while (match = currency.exec(text)) {
             // alert(text);
-            text = text.replace(match, "you lose");
+            text = text.replace(match[0], "you lose");
           }
           $(obj).html(text);
         });
