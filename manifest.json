@@ -25,6 +25,12 @@
       "css": ["balloon.css", "real-cost.css"],
       "js": ["jquery-3.2.1.slim.min.js", "real-cost-ebay.js"],
       "run_at": "document_end"
+    },
+    {
+      "matches" : ["https://*.slickdeals.net/*"],
+      "css": ["balloon.css", "real-cost.css"],
+      "js": ["jquery-3.2.1.slim.min.js", "real-cost-slickdeals.js"],
+      "run_at": "document_end"
     }
   ]
 }
