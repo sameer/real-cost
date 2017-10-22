@@ -23,9 +23,26 @@ label {
 .criteria {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-content: center;
     align-items: center;
+}
+
+#wage-input,
+#item-input,
+#price-input {}
+
+#set-new-wage,
+#set-new-price {
+    display: flex;
+    align-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 0.2rem;
+    margin-top: 0.2rem;
+}
+
+.inactive {
+    background-color: gray;
 }
 
 .real-cost {
@@ -33,33 +50,6 @@ label {
     visibility: visible;
 }
 
-#wage-input,
-#price-input {
-    margin: 0.2rem 0;
-}
-
-#set-new-wage,
-#set-new-price {
-    display: flex;
-    justify-content: center;
-    align-content: center;
-    align-items: center;
-    flex-direction: column;
-    margin-bottom: 0.2rem;
-    margin-top: 0.2rem;
-    
-}
-
-
-#wageButtonStyle, #itemButtonStyle:active{
-    background-color: cadetblue;
-
-}
-
-.active{
-    background-color: gray;
-
-}
 .real-cost-icon {
     /*small symbol of the icon*/
 }
@@ -73,8 +63,4 @@ label {
 
 .real-cost-bar ::hover {
     width: 200px;
-}
-
-.inactive {
-    background: grey;
 }
