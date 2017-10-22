@@ -1,6 +1,12 @@
 html,
 body {
-    background: cadetblue;
+    background: repeating-linear-gradient(
+        45deg,
+        #606dbc,
+        #606dbc 10px,
+        #465298 10px,
+        #465298 20px
+      );
     font-size: 14px;
     display: flex;
     align-items: center;
@@ -12,6 +18,7 @@ body {
 #myDisplayType {
     display: flex;
     margin-bottom: 0.2rem;
+    color: white;
 }
 
 #wageButtonStyle,

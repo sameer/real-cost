@@ -1,12 +1,6 @@
 /* popup js here */
 $(document).ready(function () {
-    /* $("input[name$='type']").click(function () {
-        var test = $(this).val();
 
- 
-
-    });
-*/
     $('#itemButtonStyle').addClass("inactive");
     $('#Type1').show();
     $('#Type2').hide();
@@ -39,11 +33,21 @@ function getPriceValue() {
     var price = document.getElementById('price-input').value;
 }
 
-var wageButton = document.getElementById('inputWageButton');
-wageButton.addEventListener('click', getWageValue);
+function convertWage(decimal) {
+    var num = decimal / wageVal;
+    return num + '&nbsp;'+ "hours of your life";
+}
 
-var itemButton = document.getElementById('inputPriceButton');
-itemButton.addEventListener('click', getItemValue);
+function convertItem(decimal) {
+    var num = decimal / priceVal;
+    return num + '&nbsp;' + itemVal;
+}
 
-var priceButton = document.getElementById('inputPriceButton');
-priceButton.addEventListener('click', getPriceValue);
+var wageVal = document.getElementById('inputWageButton');
+wageVal.addEventListener('click', getWageValue);
+
+var itemVal = document.getElementById('inputPriceButton');
+itemVal.addEventListener('click', getItemValue);
+
+var priceVal = document.getElementById('inputPriceButton');
+priceVal.addEventListener('click', getPriceValue);
