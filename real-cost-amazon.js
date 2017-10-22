@@ -7,24 +7,26 @@ var icon =
 var bar =
     '<div class = "real-cost-bar transition"><span>you got grim reaped</span></div></div> </div>';
 
-$(".a-color-base").append(icon + bar);
+//$(".a-color-base").append(icon + bar);
 
-$('.real-cost-icon')
-    .hover(
-        function() {
-          $(this)
-              .parent()
-              .find('.real-cost-bar')
-              .css({visibility : 'visible', width : '150px'});
-        },
+var vishnu = function() {
+  $('.real-cost-icon')
+      .hover(
+          function() {
+            $(this)
+                .parent()
+                .find('.real-cost-bar')
+                .css({visibility : 'visible', width : '150px'});
+          },
 
-        // when mouse leaves bar, collapses
-        function() {
-          var bar = $(this).parent().find('.real-cost-bar');
-          bar.removeClass('transition');
-          bar.css({visibility : 'hidden', width : '0px'});
-          bar.addClass('transition');
-        });
+          // when mouse leaves bar, collapses
+          function() {
+            var bar = $(this).parent().find('.real-cost-bar');
+            bar.removeClass('transition');
+            bar.css({visibility : 'hidden', width : '0px'});
+            bar.addClass('transition');
+          });
+};
 
 var apply = function() {
   $(".sx-price, .a-price")
@@ -61,7 +63,7 @@ var apply = function() {
           var matchedany = false;
           while (match = currency.exec(text)) {
             // alert(text);
-            text = text.replace(match[0], "you lose");
+            text = text.replace(match[0], match[0].substring(1) + "<a href='#'>V</a>");
             matchedany = true;
           }
           $(obj).attr('real-price-applied', 'true');
@@ -70,7 +72,6 @@ var apply = function() {
           }
         });
   })();
-
 };
 
 $(document).ready(apply);
