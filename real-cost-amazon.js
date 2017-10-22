@@ -58,12 +58,12 @@ var apply = function() {
   (function() {
     $(applicants)
         .not("[real-price-applied='true']")
-        .each(function(i, obj) {
+       .each(function(i, obj) {
           var text = $(obj).html();
           var matchedany = false;
           while (match = currency.exec(text)) {
             // alert(text);
-            text = text.replace(match[0], match[0].substring(1) + "<a href='#'>V</a>");
+            text = text.replace(match[0], match[0].substring(1) + "<img class='real-cost-icon' src='" + chrome.extension.getURL('icon.png') + "'>");
             matchedany = true;
           }
           $(obj).attr('real-price-applied', 'true');
