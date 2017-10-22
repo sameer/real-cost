@@ -1,4 +1,4 @@
-var CURRENCY_SYMBOL = "\u0394";
+var CURRENCY_SYMBOL = "\uD83D\uDCB2";
 
 var icon = function(data) {
   return '<i data-balloon="' + data +
@@ -24,6 +24,7 @@ var diamond = function(price, type, name) {
               prices[id] =
                   parseFloat($(prices[id]).text() + "." + $(frac).text());
             });
+        for (var i = 0; i < prices.length; ++i) { prices[i] = Math.trunc(prices[i] / parseFloat(price) * 100) / 100; }
         $(obj)
             .find(".sx-price-whole, .a-price-whole")
             .each(function(id, whole) {
@@ -34,6 +35,7 @@ var diamond = function(price, type, name) {
             .each(function(id, frac) {
               $(frac).text(Math.trunc((prices[id] % 1) * 100));
             });
+        $(obj).attr('real-price-applied', 'true');
       });
   $(".sx-price-currency, .a-price-symbol").text(CURRENCY_SYMBOL);
 
