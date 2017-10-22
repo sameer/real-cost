@@ -1,27 +1,34 @@
 var CURRENCY_SYMBOL = "\u0394";
 
-var icon = '<div class = "real-cost"> <div class="real-wrapper"><div class = "real-cost-icon" ><img src="' + chrome.extension.getURL('icon.png') + 
-              '"style = "display: block; visibility: visible; width: 20px; height: 20px"> </div>';
-      var bar = '<div class = "real-cost-bar transition"><span>you got grim reaped</span></div></div> </div>';      
+var icon =
+    '<div class = "real-cost"> <div class="real-wrapper"><div class = "real-cost-icon" ><img src="' +
+    chrome.extension.getURL('icon.png') +
+    '"style = "display: block; visibility: visible; width: 20px; height: 20px"> </div>';
+var bar =
+    '<div class = "real-cost-bar transition"><span>you got grim reaped</span></div></div> </div>';
 
-  $(".a-color-base").append(icon + bar);
+$(".a-color-base").append(icon + bar);
 
-$('.real-cost-icon').hover(
+$('.real-cost-icon')
+    .hover(
         function() {
-        $(this).parent().find('.real-cost-bar').css({visibility: 'visible', width: '150px'});
-      },
-        
+          $(this)
+              .parent()
+              .find('.real-cost-bar')
+              .css({visibility : 'visible', width : '150px'});
+        },
+
         // when mouse leaves bar, collapses
-    function() {
-            var bar = $(this).parent().find('.real-cost-bar');
-            bar.removeClass('transition');
-            bar.css({visibility: 'hidden', width: '0px'});
-            bar.addClass('transition');
-        }
-      );
+        function() {
+          var bar = $(this).parent().find('.real-cost-bar');
+          bar.removeClass('transition');
+          bar.css({visibility : 'hidden', width : '0px'});
+          bar.addClass('transition');
+        });
 
 var apply = function() {
-  $(".sx-price, .a-price").not("[real-price-applied='true']")
+  $(".sx-price, .a-price")
+      .not("[real-price-applied='true']")
       .each(function(i, obj) {
         var prices = $(obj).find(".sx-price-whole, .a-price-whole");
         $(obj)
@@ -45,9 +52,10 @@ var apply = function() {
 
   var applicants =
       ".a-color-base, .a-color-price, .a-text-strike, .a-size-minim .p13n-sc-price, .a-color-secondary, .a-link-normal";
-  var currency = new RegExp(/\$\d{1,6}(\.\d{2})?/);
+  var currency = new RegExp(/\$\d{1,3}(\,\d{3})*(\.\d{2})?/);
   (function() {
-    $(applicants).not("[real-price-applied='true']")
+    $(applicants)
+        .not("[real-price-applied='true']")
         .each(function(i, obj) {
           var text = $(obj).html();
           var matchedany = false;
@@ -57,7 +65,9 @@ var apply = function() {
             matchedany = true;
           }
           $(obj).attr('real-price-applied', 'true');
-          if (matchedany) { $(obj).html(text); }
+          if (matchedany) {
+            $(obj).html(text);
+          }
         });
   })();
 
