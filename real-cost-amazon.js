@@ -50,7 +50,7 @@ var apply = function() {
   $(".sx-price-currency, .a-price-symbol").text(CURRENCY_SYMBOL);
 
   var applicants =
-      ".a-color-base, .a-color-price, .a-text-strike, .a-size-minim .p13n-sc-price, .a-color-secondary, .a-link-normal";
+      ".a-color-base, .a-color-price, .a-text-strike, .a-size-minim .p13n-sc-price, .a-color-secondary";
   var currency = new RegExp(/\$\d{1,3}(\,\d{3})*(\.\d{2})?/);
   (function() {
     $(applicants)
