@@ -1,31 +1,19 @@
 var CURRENCY_SYMBOL = "\u0394";
 
-var icon =
-    '<img class="real-cost-icon" src="' +
-    chrome.extension.getURL('icon2.png') +
-    '">';
-var bar =
-    '<div class = "real-cost-bar real-cost-transition"><span>you got grim reaped</span></div>';
-
-//$(".a-color-base").append(icon + bar);
-var vishnu = function() {  $('.real-cost-icon')
-.hover(
-    function() {
-      $(this).parent()
-          .find('.real-cost-bar')
-          .css({visibility : 'visible', width : 'auto'});
-    },
-
-    // when mouse leaves bar, collapses
-    function() {
-      var bar = $(this).parent().find('.real-cost-bar');
-      bar.removeClass('transition');
-      bar.css({visibility : 'hidden', width : '0px'});
-      bar.addClass('transition');
-    });
-  };
+var icon = function(data) {
+  return '<i data-balloon="' + data +
+         '" data-balloon-pos="up"><img class="real-cost-icon" src="' +
+         chrome.extension.getURL('icon2.png') + '"></i>';
+};
 
 var apply = function() {
+  chrome.storage.sync.get("price", function(price) {
+    chrome.storage.sync.get("type", function(type) {
+      chrome.storage.sync.get("item_name",
+                              function(name) { diamond(price['price'], type['type'], name['item_name']); });
+    });
+  });
+var diamond = function(price, type, name) {
   $(".sx-price, .a-price")
       .not("[real-price-applied='true']")
       .each(function(i, obj) {
@@ -55,11 +43,15 @@ var apply = function() {
   (function() {
     $(applicants)
         .not("[real-price-applied='true']")
-       .each(function(i, obj) {
+        .each(function(i, obj) {
           var text = $(obj).html();
           var matchedany = false;
           while (match = currency.exec(text)) {
-            text = text.replace(match[0], match[0].substring(1) + icon + bar);
+            text = text.replace(
+                match[0],
+                match[0].substring(1) +
+                    icon(parseFloat(
+                        Math.trunc((match[0].substring(1)) / parseFloat(price) * 100) / 100) + ' ' + name));
             matchedany = true;
           }
           $(obj).attr('real-price-applied', 'true');
@@ -68,9 +60,9 @@ var apply = function() {
           }
         });
   })();
-
-  vishnu();
 };
+}
+;
 
 $(document).ready(apply);
 

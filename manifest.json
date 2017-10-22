@@ -16,19 +16,19 @@
   "content_scripts": [
     {
       "matches" : ["https://*.amazon.com/*"],
-      "css": ["real-cost.css"],
+      "css": ["real-cost.css", "balloon.css"],
       "js": ["jquery-3.2.1.slim.min.js", "real-cost-amazon.js"],
       "run_at" : "document_end"
     },
     {
       "matches" : ["https://*.ebay.com/*"],
-      "css": ["real-cost.css"],
+      "css": ["real-cost.css", "balloon.css"],
       "js": ["jquery-3.2.1.slim.min.js", "real-cost-ebay.js"],
       "run_at": "document_end"
     },
     {
       "matches" : ["https://*.slickdeals.net/*"],
-      "css": ["real-cost.css"],
+      "css": ["real-cost.css", "balloon.css"],
       "js": ["jquery-3.2.1.slim.min.js", "real-cost-slickdeals.js"],
       "run_at": "document_end"
     }

@@ -1,5 +1,5 @@
 /* popup js here */
-$(document).ready(function () {
+document.addEventListener('DOMContentLoaded', function() {
 
     $('#itemButtonStyle').addClass("inactive");
     $('#Type1').show();
@@ -19,18 +19,20 @@ $(document).ready(function () {
         $('#Type2').hide();
         $('#Type1').show();
     });
-});
 
-function getWageValue() {
-    var wage = document.getElementById('wage-input').value;
-}
+var wagef = function () {
+    var wage = $('#wage-input').val();
+    chrome.storage.sync.set({'type': 'wage', 'price':wage, 'item_name': 'hours'}, function() {alert('Saved!');});
+};
 
 function getItemValue() {
     var item = document.getElementById('item-input').value;
+    chrome.storage.sync.set({'type': 'item', 'item_name':item});
 }
 
 function getPriceValue() {
     var price = document.getElementById('price-input').value;
+    chrome.storage.sync.set({'price': price});
 }
 
 function convertWage(decimal) {
@@ -42,12 +44,11 @@ function convertItem(decimal) {
     var num = decimal / priceVal;
     return num + '&nbsp;' + itemVal;
 }
-
-var wageVal = document.getElementById('inputWageButton');
-wageVal.addEventListener('click', getWageValue);
-
-var itemVal = document.getElementById('inputPriceButton');
-itemVal.addEventListener('click', getItemValue);
-
-var priceVal = document.getElementById('inputPriceButton');
-priceVal.addEventListener('click', getPriceValue);
+$("#set-new-wage").submit(function(event) {
+  wagef();
+});
+$("#set-new-item").submit(function(event) {
+  getPriceValue();
+  getItemValue();
+});
+});
