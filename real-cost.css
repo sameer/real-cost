@@ -1,13 +1,12 @@
 html,
 body {
     background: cadetblue;
-    padding-top: 0.2rem;
     font-size: 14px;
     display: flex;
     align-items: center;
     flex-direction: column;
     width: 150px;
-    height: 250px;
+    height: 160px;
 }
 
 #myDisplayType {
@@ -15,9 +14,12 @@ body {
     margin-bottom: 0.2rem;
 }
 
-label {
-    margin: 0 0.5rem;
+#wageButtonStyle,
+#itemButtonStyle {
+    text-align: center;
     font-weight: bold;
+    width: 75px;
+    padding: 0.5rem 0;
 }
 
 .criteria {
@@ -27,18 +29,26 @@ label {
     align-items: center;
 }
 
+.desc {
+    padding-top: 0;
+    margin-top: 0;
+}
+
 #wage-input,
 #item-input,
-#price-input {}
+#price-input {
+    padding-top: 0;
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+}
 
 #set-new-wage,
-#set-new-price {
+#set-new-price,
+#set-new-item {
     display: flex;
     align-content: center;
     align-items: center;
     flex-direction: column;
-    margin-bottom: 0.2rem;
-    margin-top: 0.2rem;
 }
 
 .inactive {
