@@ -1,7 +1,6 @@
 html,
 body {
     background: cadetblue;
-    padding-top: 0.2rem;
     font-size: 14px;
     display: flex;
     align-items: center;
@@ -15,9 +14,10 @@ body {
     margin-bottom: 0.2rem;
 }
 
-label {
-    margin: 0 0.5rem;
+#wageButtonStyle, #itemButtonStyle {
+    text-align: center;
     font-weight: bold;
+    width: 75px;
 }
 
 .criteria {
@@ -32,13 +32,14 @@ label {
 #price-input {}
 
 #set-new-wage,
-#set-new-price {
+#set-new-price,
+#set-new-item {
     display: flex;
     align-content: center;
     align-items: center;
     flex-direction: column;
-    margin-bottom: 0.2rem;
-    margin-top: 0.2rem;
+    margin-bottom: 0.5rem;
+    
 }
 
 .inactive {
