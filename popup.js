@@ -1,6 +1,7 @@
 /* popup js here */
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
 
+    // UI transition
     $('#itemButtonStyle').addClass("inactive");
     $('#Type1').show();
     $('#Type2').hide();
@@ -20,35 +21,36 @@ document.addEventListener('DOMContentLoaded', function() {
         $('#Type1').show();
     });
 
-var wagef = function () {
-    var wage = $('#wage-input').val();
-    chrome.storage.sync.set({'type': 'wage', 'price':wage, 'item_name': 'hours'}, function() {alert('Saved!');});
-};
+    // wage
+    var getWage = function () {
+        var wage = $('#wage-input').val();
+        chrome.storage.sync.set({
+            'price': wage,
+            'type': 'wage',
+            'item_name': 'hours'
+        });
+    };
 
-function getItemValue() {
-    var item = document.getElementById('item-input').value;
-    chrome.storage.sync.set({'type': 'item', 'item_name':item});
-}
+    $("#set-new-wage").submit(function (event) {
+        getWage();
+    });
 
-function getPriceValue() {
-    var price = document.getElementById('price-input').value;
-    chrome.storage.sync.set({'price': price});
-}
 
-function convertWage(decimal) {
-    var num = decimal / wageVal;
-    return num + '&nbsp;'+ "hours of your life";
-}
+    // Price and Item
+    function getPriceAndItem() {
+        var item = document.getElementById('item-input').value;
+        chrome.storage.sync.set({
+            'type': 'item',
+            'item_name': item
+        });
 
-function convertItem(decimal) {
-    var num = decimal / priceVal;
-    return num + '&nbsp;' + itemVal;
-}
-$("#set-new-wage").submit(function(event) {
-  wagef();
-});
-$("#set-new-item").submit(function(event) {
-  getPriceValue();
-  getItemValue();
-});
+        var price = document.getElementById('price-input').value;
+        chrome.storage.sync.set({
+            'price': price
+        });
+    }
+
+    $("#set-new-item").submit(function (event) {
+        getPriceAndItem();
+    });
 });
