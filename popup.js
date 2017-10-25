@@ -38,12 +38,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Price and Item
     function getPriceAndItem() {
-        var item = document.getElementById('item-input').value;
+        // get item
+        var item = document.getElementById('item-input').value + "s";
         chrome.storage.sync.set({
             'type': 'item',
             'item_name': item
         });
 
+        // get price
         var price = document.getElementById('price-input').value;
         chrome.storage.sync.set({
             'price': price
