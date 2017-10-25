@@ -1,17 +1,20 @@
+// green dollar sign
 var CURRENCY_SYMBOL = "\uD83D\uDCB2";
 
+// icon
 var icon = function (data) {
   return '<i data-balloon="' + data +
     '" data-balloon-pos="up"><img class="real-cost-icon" src="' +
     chrome.extension.getURL('icon2.png') + '"></i>';
 };
 
+// main
 var apply = function () {
   chrome.storage.sync.get("price", function (price) {
     chrome.storage.sync.get("type", function (type) {
       chrome.storage.sync.get("item_name",
         function (name) {
-          diamond(price['price'], type['type'], name['item_name']);
+          diamond(price.price, type.type, name.item_name);
         });
     });
   });
@@ -71,6 +74,7 @@ var apply = function () {
   };
 };
 
+// start
 $(document).ready(apply);
 
 var hasScrolled = false;
@@ -78,6 +82,7 @@ var hasScrolled = false;
 $(window).scroll(function () {
   hasScrolled = true;
 });
+
 setInterval(function () {
   if (hasScrolled) {
     apply();
