@@ -1,6 +1,6 @@
 html,
 body {
-    background: repeating-linear-gradient( 45deg, #606dbc, #606dbc 10px, #465298 10px, #465298 20px);
+    background: lightblue;
     font-size: 14px;
     display: flex;
     align-items: center;
@@ -56,5 +56,6 @@ body {
 }
 
 .inactive {
-    background-color: gray;
+    background-color: rgb(168, 168, 168);
+    box-shadow: none;
 }
