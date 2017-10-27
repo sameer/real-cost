@@ -8,6 +8,13 @@ var iconUp = function (data) {
     chrome.extension.getURL('icon2.png') + '" /></i>';
 };
 
+var iconDown = function (data) {
+  return '<i data-balloon="' + data +
+    '" data-balloon-pos="down"><img class="real-cost-icon" src="' +
+    chrome.extension.getURL('icon2.png') + '" /></i>';
+};
+
+
 // Main
 var apply = function () {
   // Sync Info
@@ -60,34 +67,55 @@ var changePrice = function (price, type, name) {
 
   $(".sx-price-currency, .a-price-symbol").text(CURRENCY_SYMBOL);
 
-  // Amazon Internal Selector
-  var applicants =
-    ".a-color-base, .a-color-price, .a-text-strike, .a-size-minim .p13n-sc-price, .a-color-secondary";
-
+  // Amazon Internal Selector  
   // Dollar Finder
   var currency = new RegExp(/\$\d{1,3}(\,\d{3})*(\.\d{2})?/);
 
+  // Fresh Selector
+  $(".ap-fresh").not("[real-price-applied='true'], .offer-price").each(function (i, obj) {
+    var text = $(obj).html();
+    var matchedany = false;
+
+    while (match = currency.exec(text)) {
+      text = text.replace(
+        match[0],
+        CURRENCY_SYMBOL + match[0].substring(1) +
+        iconDown(parseFloat(
+          Math.trunc((match[0].substring(1)) / parseFloat(price) * 100) / 100) + ' ' + name));
+      matchedany = true;
+    }
+
+    $(obj).attr('real-price-applied', 'true');
+
+    if (matchedany) {
+      $(obj).html(text);
+    }
+  });
+
+  // General Selector
+  var applicants =
+    ".a-color-base, .a-color-price, .a-text-strike, .a-size-minim .p13n-sc-price, .a-color-secondary";
+
   // Apply Interal
-  $(applicants).not("[real-price-applied='true'], .offer-price")
-    .each(function (i, obj) {
-      var text = $(obj).html();
-      var matchedany = false;
+  $(applicants).not("[real-price-applied='true'], .offer-price").each(function (i, obj) {
+    var text = $(obj).html();
+    var matchedany = false;
 
-      while (match = currency.exec(text)) {
-        text = text.replace(
-          match[0],
-          CURRENCY_SYMBOL + match[0].substring(1) +
-          iconUp(parseFloat(
-            Math.trunc((match[0].substring(1)) / parseFloat(price) * 100) / 100) + ' ' + name));
-        matchedany = true;
-      }
+    while (match = currency.exec(text)) {
+      text = text.replace(
+        match[0],
+        CURRENCY_SYMBOL + match[0].substring(1) +
+        iconUp(parseFloat(
+          Math.trunc((match[0].substring(1)) / parseFloat(price) * 100) / 100) + ' ' + name));
+      matchedany = true;
+    }
 
-      $(obj).attr('real-price-applied', 'true');
+    $(obj).attr('real-price-applied', 'true');
 
-      if (matchedany) {
-        $(obj).html(text);
-      }
-    });
+    if (matchedany) {
+      $(obj).html(text);
+    }
+  });
 };
 
 // start
