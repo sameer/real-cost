@@ -61,14 +61,14 @@ var changePrice = function (price, type, name) {
   $(".sx-price-currency, .a-price-symbol").text(CURRENCY_SYMBOL);
 
   // Amazon Internal Selector
-  var applicants = ".a-color-base, .a-color-price, .a-text-strike, .a-size-minim .p13n-sc-price, .a-color-secondary";
+  var applicants =
+    ".a-color-base, .a-color-price, .a-text-strike, .a-size-minim .p13n-sc-price, .a-color-secondary";
 
-
-  // dollar finder
+  // Dollar Finder
   var currency = new RegExp(/\$\d{1,3}(\,\d{3})*(\.\d{2})?/);
 
   // Apply Interal
-  $(applicants).not("[real-price-applied='true']")
+  $(applicants).not("[real-price-applied='true'], .offer-price")
     .each(function (i, obj) {
       var text = $(obj).html();
       var matchedany = false;
