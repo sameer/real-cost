@@ -72,7 +72,7 @@ var changePrice = function (price, type, name) {
   var currency = new RegExp(/\$\d{1,3}(\,\d{3})*(\.\d{2})?/);
 
   // Fresh Selector
-  $(".ap-fresh").not("[real-price-applied='true'], .offer-price").each(function (i, obj) {
+  $(".ap-fresh, .a-lineitem").not("[real-price-applied='true'], .offer-price").each(function (i, obj) {
     var text = $(obj).html();
     var matchedany = false;
 
@@ -97,7 +97,7 @@ var changePrice = function (price, type, name) {
     ".a-color-base, .a-color-price, .a-text-strike, .a-size-minim .p13n-sc-price, .a-color-secondary";
 
   // Apply Interal
-  $(applicants).not("[real-price-applied='true'], .offer-price").each(function (i, obj) {
+  $(applicants).not("[real-price-applied='true'], .offer-price, #color_name_0_price, #color_name_1_price, #color_name_2_price, #color_name_3_price, #color_name_4_price, #color_name_5_price, #color_name_6_price").each(function (i, obj) {
     var text = $(obj).html();
     var matchedany = false;
 
