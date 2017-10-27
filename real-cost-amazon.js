@@ -1,7 +1,7 @@
 // Green Dollar Sign
 var CURRENCY_SYMBOL = "\uD83D\uDCB2";
 
-// icon
+// Icon
 var iconUp = function (data) {
   return '<i data-balloon="' + data +
     '" data-balloon-pos="up"><img class="real-cost-icon" src="' +
@@ -22,21 +22,23 @@ var apply = function () {
 
 // Find and Change
 var changePrice = function (price, type, name) {
-  // Catalogue
+  // Catalogue 
   $(".sx-price, .a-price").not("[real-price-applied='true']")
     .each(function (i, obj) {
+      // Store Values
       var prices = $(obj).find(".sx-price-whole, .a-price-whole");
-      $(obj)
-        .find(".sx-price-fractional, .a-price-fraction")
+      $(obj).find(".sx-price-fractional, .a-price-fraction")
         .each(function (id, frac) {
           prices[id] =
             parseFloat($(prices[id]).text() + "." + $(frac).text());
         });
 
+      // Number Covert
       for (var a = 0; a < prices.length; ++a) {
         prices[a] = Math.trunc(prices[a] / parseFloat(price) * 100) / 100;
       }
 
+      // Convert Catalogue Digit
       $(obj).find(".sx-price-whole, .a-price-whole")
         .each(function (id, whole) {
           $(whole).text(Math.trunc(prices[id]));
@@ -52,7 +54,7 @@ var changePrice = function (price, type, name) {
           }
         });
 
-      // redundancy check  
+      // Redundancy Mark  
       $(obj).attr('real-price-applied', 'true');
     });
 
