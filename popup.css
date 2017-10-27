@@ -59,3 +59,8 @@ body {
     background-color: rgb(168, 168, 168);
     box-shadow: none;
 }
+
+.invalid {
+    background-color: rgb(219, 134, 134);
+    transition: background-color 0.5s;
+}

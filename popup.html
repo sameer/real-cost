@@ -31,7 +31,7 @@
         <div id="Type1" class="desc">
             <div class="criteria">
                 <form id="set-new-wage">
-                    <input type="text" id="wage-input" value="Wage..." />
+                    <input type="text" id="wage-input" placeholder="Wage..." />
                     <button type="input" id="inputWageButton">Add Wage</button>
                 </form>
             </div>
@@ -41,8 +41,8 @@
         <div id="Type2" class="desc" style="display: none;">
             <div id="item" class="criteria">
                 <form id="set-new-item">
-                    <input type="text" id="item-input" value="Item..." />
-                    <input type="text" id="price-input" value="Price..." />
+                    <input type="text" id="item-input" placeholder="Item..." />
+                    <input type="text" id="price-input" placeholder="Price..." />
                     <button type="input" id="inputPriceButton">Add Item &amp; Price</button>
                 </form>
             </div>
@@ -51,8 +51,9 @@
     </div>
 
     <script src="jquery-3.2.1.slim.min.js"></script>
-    <script src="popup.js">
-    </script>
+    <script src="popup.js"></script>
+    <script src="node_modules\pluralize\pluralize.js"></script>
+    
 </body>
 
 </html>
