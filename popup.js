@@ -31,6 +31,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     };
 
+    // set wage
     $("#set-new-wage").submit(function (event) {
         getWage();
     });
@@ -38,14 +39,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Price and Item
     function getPriceAndItem() {
-        // get item
+        // set item
         var item = document.getElementById('item-input').value + "s";
         chrome.storage.sync.set({
             'type': 'item',
             'item_name': item
         });
 
-        // get price
+        // set price
         var price = document.getElementById('price-input').value;
         chrome.storage.sync.set({
             'price': price
