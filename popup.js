@@ -70,6 +70,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // set wage
     $("#set-new-wage").submit(function (event) {
         getWage();
+        chrome.tabs.reload();
     });
 
     // Price and Item
@@ -92,5 +93,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     $("#set-new-item").submit(function (event) {
         getPriceAndItem();
+        chrome.tabs.reload();
+
     });
 });
