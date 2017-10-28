@@ -4,6 +4,8 @@
   "name": "RealCost",
   "description": "A Chrome extension that helps you manage spending habits by demystifying prices.",
   "version": "1.0",
+  "options_page": "options.html",
+  
 
   "browser_action": {
     "default_icon": "icon.png",
