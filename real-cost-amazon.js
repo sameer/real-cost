@@ -14,19 +14,6 @@ var iconDown = function (data) {
     chrome.extension.getURL('icon2.png') + '" /></i>';
 };
 
-
-// Main
-var apply = function () {
-  // Sync Info
-  chrome.storage.sync.get("price", function (price) {
-    chrome.storage.sync.get("type", function (type) {
-      chrome.storage.sync.get("item_name", function (name) {
-        changePrice(price.price, type.type, name.item_name);
-      });
-    });
-  });
-};
-
 // Find and Change
 var changePrice = function (price, type, name) {
   // Catalogue 
@@ -72,9 +59,9 @@ var changePrice = function (price, type, name) {
   var currency = new RegExp(/\$\d{1,3}(\,\d{3})*(\.\d{2})?/);
 
   // Fresh Selector
-  $(".ap-fresh, .a-lineitem").not("[real-price-applied='true'], .offer-price").each(function (i, obj) {
-    var text = $(obj).html();
-    var matchedany = false;
+  $(".ap-fresh, .snsPriceBlock").not("[real-price-applied='true'], .offer-price").each(function (i) {
+    var text = $(this).html();
+    var switched = false;
 
     while (match = currency.exec(text)) {
       text = text.replace(
@@ -82,39 +69,53 @@ var changePrice = function (price, type, name) {
         CURRENCY_SYMBOL + match[0].substring(1) +
         iconDown(parseFloat(
           Math.trunc((match[0].substring(1)) / parseFloat(price) * 100) / 100) + ' ' + name));
-      matchedany = true;
+      switched = true;
     }
 
-    $(obj).attr('real-price-applied', 'true');
+    $(this).attr('real-price-applied', 'true');
 
-    if (matchedany) {
-      $(obj).html(text);
+    if (switched) {
+      $(this).html(text);
     }
   });
 
   // General Selector
   var applicants =
     ".a-color-base, .a-color-price, .a-text-strike, .a-size-minim .p13n-sc-price, .a-color-secondary";
+  var elements = document.getElementsByTagName("*");
+
 
   // Apply Interal
-  $(applicants).not("[real-price-applied='true'], .offer-price, #color_name_0_price, #color_name_1_price, #color_name_2_price, #color_name_3_price, #color_name_4_price, #color_name_5_price, #color_name_6_price").each(function (i, obj) {
-    var text = $(obj).html();
-    var matchedany = false;
+  $(elements).not("[real-price-applied='true'], [id*='color_name'], .offer-price, .twister_swatch_price, .price_slot_ppu, .a-size-small, .aok-float-right, .a-size-mini").filter(applicants).each(function (i) {
+    var text = $(this).html();
+    var switched = false;
 
+    // Replace
     while (match = currency.exec(text)) {
       text = text.replace(
         match[0],
         CURRENCY_SYMBOL + match[0].substring(1) +
-        iconUp(parseFloat(
-          Math.trunc((match[0].substring(1)) / parseFloat(price) * 100) / 100) + ' ' + name));
-      matchedany = true;
+        iconUp(parseFloat(Math.trunc((match[0].substring(1)) / parseFloat(price) * 100) / 100) + ' ' + name));
+      switched = true;
     }
 
-    $(obj).attr('real-price-applied', 'true');
+    $(this).attr('real-price-applied', 'true');
 
-    if (matchedany) {
-      $(obj).html(text);
+    if (switched) {
+      $(this).html(text);
     }
+  });
+};
+
+// Main
+var apply = function () {
+  // Sync Info
+  chrome.storage.sync.get("price", function (price) {
+    chrome.storage.sync.get("type", function (type) {
+      chrome.storage.sync.get("item_name", function (name) {
+        changePrice(price.price, type.type, name.item_name);
+      });
+    });
   });
 };
 
