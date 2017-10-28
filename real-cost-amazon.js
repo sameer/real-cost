@@ -14,6 +14,11 @@ var iconDown = function (data) {
     chrome.extension.getURL('icon2.png') + '" /></i>';
 };
 
+var dollarUp = function (data) {
+  return '<i data-balloon="' + data +
+    '" data-balloon-pos="up">' + CURRENCY_SYMBOL + '</i>';
+};
+
 // Find and Change
 var changePrice = function (price, type, name) {
   // Catalogue 
@@ -52,7 +57,20 @@ var changePrice = function (price, type, name) {
       $(obj).attr('real-price-applied', 'true');
     });
 
-  $(".sx-price-currency, .a-price-symbol").text(CURRENCY_SYMBOL);
+  $(".sx-price-currency, .a-price-symbol").each(function (i) {
+    var text = $(this).html();
+    var switched = false;
+
+    text = text.replace(g, dollarUp(prices[i] + ' ' + name));
+
+    $(this).attr('real-price-applied', 'true');
+
+    if (switched) {
+      $(this).html(text);
+    }
+  });
+
+
 
   // Amazon Internal Selector  
   // Dollar Finder
@@ -119,7 +137,7 @@ var apply = function () {
   });
 };
 
-// start
+// Start
 $(document).ready(apply);
 
 var hasScrolled = false;
