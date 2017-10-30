@@ -57,6 +57,10 @@ var changePrice = function (price, type, name) {
       $(obj).attr('real-price-applied', 'true');
     });
 
+  $(".sx-price-currency, .a-price-symbol").text(CURRENCY_SYMBOL);
+
+// What the fuck is going on
+/*
   $(".sx-price-currency, .a-price-symbol").each(function (i) {
     var text = $(this).html();
     var switched = false;
@@ -69,7 +73,7 @@ var changePrice = function (price, type, name) {
       $(this).html(text);
     }
   });
-
+*/
 
 
   // Amazon Internal Selector  
