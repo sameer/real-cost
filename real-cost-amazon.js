@@ -3,21 +3,18 @@ var CURRENCY_SYMBOL = "\uFF04";
 
 // Icon
 var iconUp = function (data) {
-  return '<i data-balloon="' + data +
-    '" data-balloon-pos="up"><img class="real-cost-icon" src="' +
-    chrome.extension.getURL('icon2.png') + '" /></i>';
+  return '<img title="'+data'" class="real-cost-icon" src="' +
+    chrome.extension.getURL('icon2.png') + '" />';
 };
 
 var iconDown = function (data) {
-  return '<i data-balloon="' + data +
-    '" data-balloon-pos="down"><img class="real-cost-icon" src="' +
-    chrome.extension.getURL('icon2.png') + '" /></i>';
+  return '<img title="'+data'" class="real-cost-icon" src="' +
+    chrome.extension.getURL('icon2.png') + '" />';
 };
 
 var dollarUp = function (data) {
-  return '<i data-balloon="' + data +
-    '" data-balloon-pos="up"><img class="real-cost-icon" src="' +
-    chrome.extension.getURL('icon2.png') + '" /></i>';
+  return '<img title="'+data'" class="real-cost-icon" src="' +
+    chrome.extension.getURL('icon2.png') + '" />';
 };
 
 // Find and Change
