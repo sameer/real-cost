@@ -1,5 +1,5 @@
 // Green Dollar Sign
-var CURRENCY_SYMBOL = "\uD83D\uDCB2";
+var CURRENCY_SYMBOL = "\uFF04";
 
 // Icon
 var iconUp = function (data) {
@@ -38,14 +38,12 @@ var changePrice = function (price, type, name) {
     }
 
     $(obj).find(".sx-price-currency, .a-price-symbol").each(function (i) {
-      $(this).html(dollarUp(prices[i]));
+      $(this).html(dollarUp(prices[i] + ' ' + name));
     });
 
     // Redundancy Mark  
     $(obj).attr('real-price-applied', 'true');
   });
-
- 
 
   // Amazon Internal Selector  
   // Dollar Finder
