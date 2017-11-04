@@ -3,17 +3,17 @@ var CURRENCY_SYMBOL = "\uFF04";
 
 // Icon
 var iconUp = function (data) {
-  return '<img title="'+data'" class="real-cost-icon" src="' +
+  return '<img title="'+data+'" class="real-cost-icon" src="' +
     chrome.extension.getURL('icon2.png') + '" />';
 };
 
 var iconDown = function (data) {
-  return '<img title="'+data'" class="real-cost-icon" src="' +
+  return '<img title="'+data+'" class="real-cost-icon" src="' +
     chrome.extension.getURL('icon2.png') + '" />';
 };
 
 var dollarUp = function (data) {
-  return '<img title="'+data'" class="real-cost-icon" src="' +
+  return '<img title="'+data+'" class="real-cost-icon" src="' +
     chrome.extension.getURL('icon2.png') + '" />';
 };
 
