@@ -16,65 +16,36 @@ var iconDown = function (data) {
 
 var dollarUp = function (data) {
   return '<i data-balloon="' + data +
-    '" data-balloon-pos="up">' + CURRENCY_SYMBOL + '</i>';
+    '" data-balloon-pos="up"><img class="real-cost-icon" src="' +
+    chrome.extension.getURL('icon2.png') + '" /></i>';
 };
 
 // Find and Change
 var changePrice = function (price, type, name) {
   // Catalogue 
-  $(".sx-price, .a-price").not("[real-price-applied='true']")
-    .each(function (i, obj) {
-      // Store Values
-      var prices = $(obj).find(".sx-price-whole, .a-price-whole");
-      $(obj).find(".sx-price-fractional, .a-price-fraction")
-        .each(function (id, frac) {
-          prices[id] =
-            parseFloat($(prices[id]).text() + "." + $(frac).text());
-        });
+  $(".sx-price, .a-price").not("[real-price-applied='true']").each(function (i, obj) {
+    // Store Values
+    var prices = $(obj).find(".sx-price-whole, .a-price-whole");
+    $(obj).find(".sx-price-fractional, .a-price-fraction")
+      .each(function (id, frac) {
+        prices[id] =
+          parseFloat($(prices[id]).text() + "." + $(frac).text());
+      });
 
-      // Number Covert
-      for (var a = 0; a < prices.length; ++a) {
-        prices[a] = Math.trunc(prices[a] / parseFloat(price) * 100) / 100;
-      }
+    // Number Covert
+    for (var a = 0; a < prices.length; ++a) {
+      prices[a] = Math.trunc(prices[a] / parseFloat(price) * 100) / 100;
+    }
 
-      // Convert Catalogue Digit
-      $(obj).find(".sx-price-whole, .a-price-whole")
-        .each(function (id, whole) {
-          $(whole).text(Math.trunc(prices[id]));
-        });
-
-      $(obj).find(".sx-price-fractional, .a-price-fraction")
-        .each(function (id, frac) {
-          varResult = Math.trunc((prices[id] % 1) * 100);
-          if (varResult.toString().length === 2) {
-            $(frac).text(varResult);
-          } else {
-            $(frac).text("0" + varResult);
-          }
-        });
-
-      // Redundancy Mark  
-      $(obj).attr('real-price-applied', 'true');
+    $(obj).find(".sx-price-currency, .a-price-symbol").each(function (i) {
+      $(this).html(dollarUp(prices[i]));
     });
 
-  $(".sx-price-currency, .a-price-symbol").text(CURRENCY_SYMBOL);
-
-// What the fuck is going on
-/*
-  $(".sx-price-currency, .a-price-symbol").each(function (i) {
-    var text = $(this).html();
-    var switched = false;
-
-    text = text.replace(g, dollarUp(prices[i] + ' ' + name));
-
-    $(this).attr('real-price-applied', 'true');
-
-    if (switched) {
-      $(this).html(text);
-    }
+    // Redundancy Mark  
+    $(obj).attr('real-price-applied', 'true');
   });
-*/
 
+ 
 
   // Amazon Internal Selector  
   // Dollar Finder
