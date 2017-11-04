@@ -1,4 +1,6 @@
 # real-cost
+![Icon](icon.png)
+
 Chrome extension that helps you manage spending habits by demystifying prices.
 
 This Chrome extension takes a price on a webpage such as Amazon and converts the price into an amount of time based on salary.
