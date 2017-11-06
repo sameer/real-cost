@@ -1,9 +1,10 @@
 {
   "manifest_version": 2,
 
-  "name": "RealCost",
+  "name": "Real Cost",
+  "short_name": "Real Cost",
   "description": "A Chrome extension that helps you manage spending habits by demystifying prices.",
-  "version": "1.0",
+  "version": "1.2",
   "browser_action": {
     "default_icon": "icon.png",
     "default_popup": "popup.html"
